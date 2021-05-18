@@ -166,7 +166,6 @@ module.exports = function BattleInfo(mod) {
     function resetTimeouts () {
         config.classes.forEach(teraClass => {
             teraClass.statuses.forEach(status => {
-                status.status = 0;
                 mod.clearTimeout(status.timer);
             })
             teraClass.skills.forEach(skill => {
