@@ -4,7 +4,7 @@ import glob
 import zipfile
 from pprint import pprint
 
-zipName = 'battle-info-mater'
+zipName = 'battle-info-master'
 
 if __name__ == '__main__':
     zipf = zipfile.ZipFile(zipName + '.zip', 'w', zipfile.ZIP_DEFLATED)
