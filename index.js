@@ -1,4 +1,4 @@
-module.exports = function HelperForMystic(mod) {
+module.exports = function BattleInfo(mod) {
     const config = require('./config');
 
     let gameId = null;
