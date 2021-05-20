@@ -42,17 +42,17 @@ module.exports = function BattleInfo(mod) {
     });
 
     mod.hook('S_ABNORMALITY_BEGIN', 4, event => {
-        if (!bossInfo) return;
-
         config.classes.forEach(teraClass => {
             teraClass.statuses.forEach(status => {
-                if (event.id === status.id && (event.target === bossInfo.id || event.target === gameId)) {
+                if (event.id === status.id) {
                     status.status = 1;
-                    if (status.show_start) {
-                        statusStart(status, teraClass, getStatusDuration(event));
-                    }
-                    if (status.show_warning && currentClass === teraClass.id) {
-                        status.timer = mod.setTimeout(statusWarning, Number(event.duration) - status.timeout_warning, status, teraClass);
+                    if (bossInfo && (event.target === bossInfo.id || event.target === gameId)) {
+                        if (status.show_start) {
+                            statusStart(status, teraClass, getStatusDuration(event));
+                        }
+                        if (status.show_warning && currentClass === teraClass.id) {
+                            status.timer = mod.setTimeout(statusWarning, Number(event.duration) - status.timeout_warning, status, teraClass);
+                        }
                     }
                 }
             })
@@ -60,17 +60,18 @@ module.exports = function BattleInfo(mod) {
     });
 
     mod.hook('S_ABNORMALITY_REFRESH', 2, event => {
-        if (!bossInfo) return;
-
         config.classes.forEach(teraClass => {
             teraClass.statuses.forEach(status => {
-                if (event.id === status.id && (event.target === bossInfo.id || event.target === gameId)) {
-                    mod.clearTimeout(status.timer);
-                    if (status.show_start) {
-                        statusStart(status, teraClass, getStatusDuration(event));
-                    }
-                    if (status.show_warning && currentClass === teraClass.id) {
-                        status.timer = mod.setTimeout(statusWarning, Number(event.duration) - status.timeout_warning, status, teraClass);
+                if (event.id === status.id) {
+                    status.status = 1;
+                    if (bossInfo && (event.target === bossInfo.id || event.target === gameId)) {
+                        mod.clearTimeout(status.timer);
+                        if (status.show_start) {
+                            statusStart(status, teraClass, getStatusDuration(event));
+                        }
+                        if (status.show_warning && currentClass === teraClass.id) {
+                            status.timer = mod.setTimeout(statusWarning, Number(event.duration) - status.timeout_warning, status, teraClass);
+                        }
                     }
                 }
             })
@@ -78,15 +79,15 @@ module.exports = function BattleInfo(mod) {
     });
 
     mod.hook('S_ABNORMALITY_END', 1, event => {
-        if (!bossInfo) return;
-
         config.classes.forEach(teraClass => {
             teraClass.statuses.forEach(status => {
-                if (event.id === status.id && (event.target === bossInfo.id || event.target === gameId)) {
+                if (event.id === status.id) {
                     status.status = 0;
-                    mod.clearTimeout(status.timer);
-                    if (status.show_ends && currentClass === teraClass.id) {
-                        statusEnd(status, teraClass);
+                    if (bossInfo && (event.target === bossInfo.id || event.target === gameId)) {
+                        mod.clearTimeout(status.timer);
+                        if (status.show_ends && currentClass === teraClass.id) {
+                            statusEnd(status, teraClass);
+                        }
                     }
                 }
             })
