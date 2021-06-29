@@ -1,14 +1,14 @@
 {
   "files": {
     "config.js": "44893a4a361ad7778b44d4fd167807d19ff6e2955f7fee02d830952d5c302e95",
-    "index.js": "92b77f11ab2a43933d1a6f8299de69b4b4331ee5c43954673af096b6a9ca4577",
-    "module.json": "a60096afa0f99433bf4e73922d2e2eccb2ec52672b650e7a318d8202e7035266"
+    "index.js": "18f67fae15a30beace5ef32b21dfe9d6a5b633ed966444dce58f5ccf1db30882",
+    "module.json": "1613308925ff3d912a9eb593ada15efdc9462f6ddae233379b05d47c9459645e"
   },
   "defs": {
     "S_LOGIN": 14,
     "S_LOAD_TOPO": 3,
     "S_BOSS_GAGE_INFO": 3,
-    "S_ABNORMALITY_BEGIN": 4,
+    "S_ABNORMALITY_BEGIN": 5,
     "S_ABNORMALITY_REFRESH": 2,
     "S_ABNORMALITY_END": 1,
     "S_START_COOLTIME_SKILL": 3,

@@ -41,7 +41,7 @@ module.exports = function BattleInfo(mod) {
         }
     });
 
-    mod.hook('S_ABNORMALITY_BEGIN', 4, event => {
+    mod.hook('S_ABNORMALITY_BEGIN', 5, event => {
         config.classes.forEach(teraClass => {
             teraClass.statuses.forEach(status => {
                 if (event.id === status.id) {

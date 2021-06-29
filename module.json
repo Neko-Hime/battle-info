@@ -3,5 +3,5 @@
   "author": "Neko-Hime",
   "description": "Module for Tera Toolbox to show info during boss battle (buffs, debuffs and skills cooldowns).",
   "servers": ["https://raw.githubusercontent.com/Neko-Hime/battle-info/master/"],
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
